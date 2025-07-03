@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Love Story ❤️</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary-color: #ff4d6d;
+      --secondary-color: #ff8fa3;
+      --accent-color: #ffb3c1;
+      --dark-pink: #c9184a;
+      --light-pink: #fff0f3;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, var(--light-pink), white);
+      color: #5e0035;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    
+    .romantic-font {
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    .center-box {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+      background: url('https://i.pinimg.com/originals/8b/a6/6d/8ba66d9f5a9b0f8f7a3b3a3e3b3a3a3e.png') no-repeat center center;
+      background-size: cover;
+    }
+    
+    .hidden { 
+      display: none !important; 
+    }
+    
+    .btn-romantic {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      margin-top: 25px;
+      border: none;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-romantic:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+      background-color: var(--dark-pink);
+    }
+    
+    .btn-romantic:active {
+      transform: translateY(1px);
+    }
+    
+    .btn-romantic:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    
+    .btn-romantic:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+    
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(20, 20);
+        opacity: 0;
+      }
+    }
+    
+    .modal-content {
+      border-radius: 20px;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modal-header {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-bottom: none;
+    }
+    
+    .modal-title {
+      font-weight: 500;
+    }
+    
+    .form-control {
+      border-radius: 10px;
+      padding: 12px 15px;
+      border: 2px solid #f8bbd0;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(255, 77, 109, 0.25);
+    }
+    
+    .box-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+    
+    .letter-box {
+      width: 160px;
+      height: 160px;
+      background: white;
+      border: 3px solid var(--accent-color);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .letter-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-color);
+    }
+    
+    .letter-box:active {
+      transform: translateY(-5px);
+    }
+    
+    .letter-content {
+      display: none;
+      padding: 2rem;
+      font-style: italic;
+      color: #880e4f;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 2rem auto;
+      position: relative;
+    }
+    
+    .letter-content:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      border-radius: 20px 20px 0 0;
+    }
+    
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+    
+    .gallery img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .heart {
+      position: absolute;
+      pointer-events: none;
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    .step-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .step-container:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+    
+    .video-container {
+      margin: 30px 0;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    video {
+      max-width: 100%;
+      border-radius: 15px;
+    }
+    
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .progress-container {
+      width: 100%;
+      max-width: 500px;
+      height: 10px;
+      background: #f8bbd0;
+      border-radius: 10px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+    
+    .message-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 100;
+    }
+    
+    .message-container.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .close-message {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #888;
+    }
+    
+    /* Countdown Timer */
+    .countdown {
+      font-size: 2rem;
+      margin: 20px 0;
+      font-weight: bold;
+      color: var(--dark-pink);
+    }
+    
+    .countdown span {
+      display: inline-block;
+      min-width: 60px;
+      padding: 5px;
+      background: white;
+      border-radius: 10px;
+      margin: 0 5px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Virtual Rose */
+    .rose-container {
+      position: relative;
+      height: 200px;
+      margin: 30px 0;
+    }
+    
+    .rose {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: all 1s ease;
+    }
+    
+    .rose-bud {
+      font-size: 60px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    
+    .rose-bloom {
+      transform: scale(1.5);
+    }
+    
+    .rose-bloom .rose-bud {
+      animation: pulse 1.5s infinite alternate;
+    }
+    
+    .leaves {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .leaves:before, .leaves:after {
+      content: "🍃";
+      position: absolute;
+      font-size: 30px;
+    }
+    
+    .leaves:before {
+      left: -20px;
+      top: 30px;
+      transform: rotate(-30deg);
+    }
+    
+    .leaves:after {
+      right: -20px;
+      top: 30px;
+      transform: rotate(30deg);
+    }
+    
+    .rose-petal {
+      position: absolute;
+      animation: float-up linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    @keyframes float-up {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+    
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      100% { transform: translate(-50%, -50%) scale(1.2); }
+    }
+    
+    /* Yes/No Buttons */
+    .yes-no-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    
+    .btn-yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    .btn-no {
+      background-color: #f44336;
+      color: white;
+    }
+    
+    .sad-message {
+      color: #f44336;
+      font-style: italic;
+      margin: 15px 0;
+      animation: shake 0.5s;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+    
+    .happy-message {
+      color: #4CAF50;
+      font-style: italic;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Hearts Background -->
+<div class="floating-hearts" id="floatingHearts"></div>
+
+<!-- Confetti Canvas -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Romantic Music -->
+<audio id="romanticMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Sad Music -->
+<audio id="sadMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Welcome Screen -->
+<div id="welcomeScreen" class="center-box animate__animated animate__fadeIn">
+  <h1 class="romantic-font display-3 mb-4 animate__animated animate__pulse animate__infinite" style="animation-duration: 2s;">For Someone Special</h1>
+  <p class="lead mb-5">A journey through our beautiful moments together</p>
+  <button class="btn-romantic animate__animated animate__bounceIn" onclick="startJourney()">Begin Our Story</button>
+</div>
+
+<!-- Modal: First Question -->
+<div class="modal fade" id="codeModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">💖 Where did we first meet? 💖</h5>
+      </div>
+      <div class="modal-body">
+        <p class="mb-3">Let's see if you remember where our story began...</p>
+        <input type="text" id="answer1" class="form-control" placeholder="Enter the place name">
+        <button class="btn-romantic mt-3" onclick="checkAnswer1()">Submit</button>
+        <div id="error1" class="text-danger mt-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Step Content -->
+<div id="mainContent" class="center-box hidden">
+  <div class="step-container">
+    <div id="steps">
+      <div id="stepArea"></div>
+      <div id="answerArea"></div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <button class="btn-romantic mt-4 hidden" id="nextStepBtn" onclick="nextStep()">Continue Our Journey ➡️</button>
+    </div>
+  </div>
+</div>
+
+<!-- Final Section -->
+<div id="finalStep" class="center-box hidden">
+  <div class="step-container">
+    <h2 class="romantic-font">Choose A Special Letter 💌</h2>
+    <p class="mb-4">Each box contains a heartfelt message just for you</p>
+    
+    <div class="box-grid">
+      <div class="letter-box animate__animated animate__fadeIn" onclick="revealLetter(1)">💝</div>
+      <div class="letter-box animate__animated animate__fadeIn animate__delay-1s" onclick="revealLetter(2)">💌</div>
+      <div class="letter-box animate__animated animate__fadeIn animate__delay-2s" onclick="revealLetter(3)">💘</div>
+    </div>
+    
+    <div class="letter-content animate__animated" id="letter1">
+      <h4 class="romantic-font">My Dearest Love</h4>
+      <p>"You are my favorite hello and hardest goodbye. Every moment with you feels like a beautiful dream I never want to wake up from. I cherish our laughter, our quiet moments, and everything in between."</p>
+      <p class="text-end romantic-font">Forever yours</p>
+    </div>
+    
+    <div class="letter-content animate__animated" id="letter2">
+      <h4 class="romantic-font">My Sweetest Joy</h4>
+      <p>"Every day with you is my favorite day. So, today is my new favorite day. Thank you for filling my life with so much happiness and love. I can't wait to create countless more memories with you."</p>
+      <p class="text-end romantic-font">With all my heart</p>
+    </div>
+    
+    <div class="letter-content animate__animated" id="letter3">
+      <h4 class="romantic-font">My Beloved</h4>
+      <p>"I love you, not just for who you are, but for how you make me feel. You've shown me what true happiness means, and I promise to spend my life making you feel as loved as you've made me feel."</p>
+      <p class="text-end romantic-font">Always and forever</p>
+    </div>
+    
+    <div class="mt-4">
+      <textarea id="userMessage" placeholder="Write your loving message back..." class="form-control" rows="4"></textarea>
+      <button class="btn-romantic mt-3" onclick="sendMessage()">Send Your Love 💖</button>
+    </div>
+    
+    <div id="msgSent" class="alert alert-success mt-3" style="display: none;">
+      Your message has been sent straight to my heart! 💌
+    </div>
+  </div>
+</div>
+
+<!-- Message Notification -->
+<div class="message-container" id="messageNotification">
+  <span class="close-message" onclick="hideMessage()">×</span>
+  <div id="notificationContent"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+// Configuration
+const firstAnswer = "cafe de paris".toLowerCase();
+const romanticMessages = [
+  "Thinking of you... 💖",
+  "You make my heart smile 😊",
+  "Every love story is beautiful, but ours is my favorite",
+  "I love you more than yesterday, but less than tomorrow"
+];
+
+let currentStep = 0;
+const steps = [
+  {
+    question: "Do you remember our first date?",
+    type: "yesno",
+    correctAnswer: "yes",
+    happyMessage: "Of course you do! It was magical ✨",
+    sadMessage: "How could you forget? 😢 It was at Café de Paris!"
+  },
+  {
+    question: "What is your favorite memory with me?",
+    type: "text",
+    correctAnswers: ["beach", "dinner", "movie", "travel"],
+    happyMessage: "That's one of my favorites too! 💕",
+    sadMessage: "Not your best answer... but I still love you 😘"
+  },
+  {
+    question: "Our Anniversary Countdown 💑",
+    type: "countdown",
+    targetDate: "2025-06-15" // CHANGE THIS TO YOUR ANNIVERSARY DATE
+  },
+  {
+    question: "Here's our beautiful gallery:",
+    type: "gallery",
+    content: [
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7",
+      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70",
+      "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47"
+    ]
+  },
+  {
+    question: "Click the rose to see it bloom 🌹",
+    type: "rose"
+  },
+  {
+    question: "Do you love me more today than yesterday?",
+    type: "yesno",
+    correctAnswer: "yes",
+    happyMessage: "I love you more every day! 💘",
+    sadMessage: "My heart just broke a little... 💔"
+  }
+];
+
+// Initialize
+window.onload = () => {
+  createFloatingHearts();
+  
+  // Show random romantic messages
+  setInterval(() => {
+    if(Math.random() > 0.7) {
+      showNotification(romanticMessages[Math.floor(Math.random() * romanticMessages.length)]);
+    }
+  }, 30000);
+};
+
+function startJourney() {
+  document.getElementById('welcomeScreen').classList.add('hidden');
+  const modal = new bootstrap.Modal(document.getElementById('codeModal'));
+  modal.show();
+}
+
+function checkAnswer1() {
+  const userInput = document.getElementById('answer1').value.toLowerCase();
+  if (userInput === firstAnswer) {
+    bootstrap.Modal.getInstance(document.getElementById('codeModal')).hide();
+    document.getElementById('mainContent').classList.remove('hidden');
+    showStepContent();
+    document.getElementById('romanticMusic').play();
+    showNotification("You remembered! Our story began there 💕");
+    triggerConfetti();
+  } else {
+    document.getElementById('error1').innerHTML = "That's not where we met... try again!";
+    document.getElementById('sadMusic').play();
+  }
+}
+
+function showStepContent() {
+  const step = steps[currentStep];
+  let content = `<h3 class="mb-4">${step.question}</h3>`;
+  let answerArea = '';
+  
+  const nextBtn = document.getElementById('nextStepBtn');
+  nextBtn.classList.remove('hidden');
+  nextBtn.disabled = false;
+
+  if (step.type === "yesno") {
+    answerArea = `
+      <div class="yes-no-buttons">
+        <button class="btn btn-yes btn-lg" onclick="checkYesNoAnswer('yes')">Yes ❤️</button>
+        <button class="btn btn-no btn-lg" onclick="checkYesNoAnswer('no')">No 💔</button>
+      </div>
+      <div id="responseMessage"></div>
+    `;
+    nextBtn.classList.add('hidden');
+  } 
+  else if (step.type === "text") {
+    answerArea = `
+      <input type="text" id="textAnswer" class="form-control mb-3" placeholder="Your answer...">
+      <button class="btn-romantic" onclick="checkTextAnswer()">Submit</button>
+      <div id="responseMessage"></div>
+    `;
+    nextBtn.classList.add('hidden');
+  }
+  else if (step.type === "countdown") {
+    content += `
+      <div class="countdown" id="countdownTimer">Loading...</div>
+      <p id="countdownMessage">Until our special day! 💖</p>
+    `;
+    answerArea = "";
+    nextBtn.classList.remove('hidden');
+    
+    document.getElementById('stepArea').innerHTML = content;
+    document.getElementById('answerArea').innerHTML = answerArea;
+    startCountdown(step.targetDate);
+    return;
+  }
+  else if (step.type === "gallery") {
+    content += '<div class="gallery">';
+    step.content.forEach(img => {
+      content += `<img src="${img}" onclick="showFullImage('${img}')">`;
+    });
+    content += '</div>';
+  } 
+  else if (step.type === "rose") {
+    content += `
+      <div class="rose-container">
+        <div class="rose" id="virtualRose" onclick="bloomRose()">
+          <div class="rose-bud">🌹</div>
+          <div class="leaves hidden"></div>
+        </div>
+      </div>
+      <p id="roseMessage" class="hidden">For you, my love... always 🌹</p>
+    `;
+    nextBtn.classList.add('hidden');
+  }
+  
+  document.getElementById('stepArea').innerHTML = content;
+  document.getElementById('answerArea').innerHTML = answerArea;
+  updateProgressBar();
+}
+
+function startCountdown(targetDate) {
+  const countdownElement = document.getElementById('countdownTimer');
+  const messageElement = document.getElementById('countdownMessage');
+  const nextBtn = document.getElementById('nextStepBtn');
+  const target = new Date(targetDate).getTime();
+  const now = new Date().getTime();
+  const distance = target - now;
+
+  // Immediate check if date is reached
+  if (distance <= 0) {
+    countdownElement.innerHTML = "Happy Anniversary! 💖";
+    messageElement.innerHTML = "Today is our special day! 🎉";
+    nextBtn.disabled = false;
+    triggerConfetti();
+    document.getElementById('romanticMusic').play();
+    return;
+  }
+
+  // Initialize countdown display
+  updateCountdownDisplay(target, now, countdownElement);
+
+  // Update countdown every second
+  const countdown = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = target - now;
+    
+    if (distance <= 0) {
+      clearInterval(countdown);
+      countdownElement.innerHTML = "Happy Anniversary! 💖";
+      messageElement.innerHTML = "Today is our special day! 🎉";
+      nextBtn.disabled = false;
+      triggerConfetti();
+      document.getElementById('romanticMusic').play();
+      return;
+    }
+    
+    updateCountdownDisplay(target, now, countdownElement);
+  }, 1000);
+
+  // Disable next button if date is in future
+  nextBtn.disabled = distance > 0;
+}
+
+function updateCountdownDisplay(target, now, element) {
+  const distance = target - now;
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+  element.innerHTML = `
+    <span>${days}</span>d 
+    <span>${hours}</span>h 
+    <span>${minutes}</span>m 
+    <span>${seconds}</span>s
+  `;
+}
+
+function checkYesNoAnswer(answer) {
+  const step = steps[currentStep];
+  const responseElement = document.getElementById('responseMessage');
+  
+  if (answer === step.correctAnswer) {
+    responseElement.innerHTML = `<p class="happy-message">${step.happyMessage}</p>`;
+    triggerConfetti();
+    document.getElementById('romanticMusic').play();
+  } else {
+    responseElement.innerHTML = `<p class="sad-message">${step.sadMessage}</p>`;
+    document.getElementById('sadMusic').play();
+  }
+  
+  document.getElementById('nextStepBtn').classList.remove('hidden');
+}
+
+function checkTextAnswer() {
+  const step = steps[currentStep];
+  const userInput = document.getElementById('textAnswer').value.toLowerCase();
+  const responseElement = document.getElementById('responseMessage');
+  let isCorrect = false;
+  
+  step.correctAnswers.forEach(correctAnswer => {
+    if (userInput.includes(correctAnswer)) {
+      isCorrect = true;
+    }
+  });
+  
+  if (isCorrect) {
+    responseElement.innerHTML = `<p class="happy-message">${step.happyMessage}</p>`;
+    triggerConfetti();
+    document.getElementById('romanticMusic').play();
+  } else {
+    responseElement.innerHTML = `<p class="sad-message">${step.sadMessage}</p>`;
+    document.getElementById('sadMusic').play();
+  }
+  
+  document.getElementById('nextStepBtn').classList.remove('hidden');
+}
+
+function bloomRose() {
+  const rose = document.getElementById('virtualRose');
+  const message = document.getElementById('roseMessage');
+  const leaves = rose.querySelector('.leaves');
+  
+  rose.classList.add('rose-bloom');
+  leaves.classList.remove('hidden');
+  message.classList.remove('hidden');
+  
+  // Create falling petals
+  for (let i = 0; i < 10; i++) {
+    createRosePetal(rose);
+  }
+  
+  triggerConfetti();
+  document.getElementById('romanticMusic').play();
+  document.getElementById('nextStepBtn').classList.remove('hidden');
+}
+
+function createRosePetal(container) {
+  const petal = document.createElement('div');
+  petal.className = 'rose-petal';
+  petal.innerHTML = '🌸';
+  petal.style.left = `${Math.random() * 100}%`;
+  petal.style.top = `${Math.random() * 100}%`;
+  petal.style.fontSize = `${Math.random() * 20 + 10}px`;
+  petal.style.animationDuration = `${Math.random() * 3 + 2}s`;
+  petal.style.animationDelay = `${Math.random() * 0.5}s`;
+  container.appendChild(petal);
+  
+  // Remove petal after animation
+  setTimeout(() => {
+    petal.remove();
+  }, 3000);
+}
+
+function nextStep() {
+  currentStep++;
+  if (currentStep < steps.length) {
+    showStepContent();
+  } else {
+    document.getElementById('mainContent').classList.add('hidden');
+    document.getElementById('finalStep').classList.remove('hidden');
+    triggerConfetti();
+    showNotification("You've reached the end of our journey... but not the end of our love 💖");
+  }
+}
+
+function updateProgressBar() {
+  const progress = ((currentStep + 1) / (steps.length + 1)) * 100;
+  document.getElementById('progressBar').style.width = `${progress}%`;
+}
+
+function revealLetter(n) {
+  document.querySelectorAll('.letter-content').forEach(div => {
+    div.style.display = 'none';
+    div.classList.remove('animate__fadeIn');
+  });
+  
+  const box = document.getElementById('letter' + n);
+  box.style.display = 'block';
+  box.classList.add('animate__fadeIn');
+  
+  setTimeout(() => {
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+  
+  triggerConfetti();
+}
+
+function sendMessage() {
+  const message = document.getElementById('userMessage').value.trim();
+  if (message) {
+    document.getElementById('msgSent').style.display = 'block';
+    document.getElementById('userMessage').value = "";
+    
+    showNotification("Your sweet message warmed my heart 💌");
+    
+    setTimeout(() => {
+      document.getElementById('msgSent').style.display = 'none';
+    }, 5000);
+    
+    triggerConfetti();
+  }
+}
+
+function triggerConfetti() {
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: ['#ff4d6d', '#ff8fa3', '#ffb3c1', '#c9184a']
+  });
+}
+
+function createFloatingHearts() {
+  const container = document.getElementById('floatingHearts');
+  const heartColors = ['#ff4d6d', '#ff8fa3', '#ffb3c1', '#c9184a'];
+  
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.className = 'heart';
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.top = `${Math.random() * 100}%`;
+    heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+    heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
+    heart.style.animationDelay = `${Math.random() * 5}s`;
+    heart.style.opacity = Math.random() * 0.5 + 0.3;
+    container.appendChild(heart);
+  }
+}
+
+function showNotification(message) {
+  const notification = document.getElementById('messageNotification');
+  document.getElementById('notificationContent').innerHTML = message;
+  notification.classList.add('show');
+  
+  setTimeout(() => {
+    hideMessage();
+  }, 5000);
+}
+
+function hideMessage() {
+  document.getElementById('messageNotification').classList.remove('show');
+}
+
+function showFullImage(src) {
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '1000';
+  overlay.style.cursor = 'pointer';
+  overlay.onclick = () => document.body.removeChild(overlay);
+  
+  const img = document.createElement('img');
+  img.src = src;
+  img.style.maxWidth = '90%';
+  img.style.maxHeight = '90%';
+  img.style.borderRadius = '15px';
+  img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+  
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
+}
+</script>
+</body>
+</html>
